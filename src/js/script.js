@@ -101,14 +101,9 @@ function pesquisarProdutos(pesquisaUsuario) {
 //== FUNÇÃO EXTRA PRA PESQUISAR SE APERTAR O ENTER == //
 let body = document.querySelector('body')
 
-body.addEventListener(
-  'keypress',
-  function (event) {
+body.addEventListener('keypress',function (event) {
     if (event.which == 13) {
       let pesquisaUsuario = inputSearch.value
       pesquisarProdutos(pesquisaUsuario)
       arrayPesquisa = []
-    }
-  },
-  false
-)
+    }},false)
