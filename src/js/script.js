@@ -97,6 +97,8 @@ function pesquisarProdutos(pesquisaUsuario) {
     listarProdutos(arrayPesquisa)
 }
 
+
+//== FUNÇÃO EXTRA PRA PESQUISAR SE APERTAR O ENTER == //
 let body = document.querySelector('body')
 
 body.addEventListener(
