@@ -1,7 +1,6 @@
 let selectUl = document.querySelector('.containerUl')
 let totalValue = document.querySelector('.totalValue')
 
-
 //==FUNÇÃO PARA LISTAR OS PRODUTOS DE ACORDO COM O ARRAY==//
 function listarProdutos(array) {
     selectUl.innerHTML = ``
@@ -11,7 +10,6 @@ function listarProdutos(array) {
     let totalSum = atualizarValor(array)
     totalValue.innerHTML = `R$ ${totalSum},00`
 }
-
 
 //==FUNÇÃO PARA CRIAR OS CARDS DE ACORDO COM O PRODUTO==//
 function criarCards(produto) {
@@ -71,7 +69,6 @@ listarProdutos(produtos)
 
 listarCategorias()
 
-
 //==CRIANDO BOTÃO DE BUSCA FUNCIONAL==//
 
 let inputSearch = document.querySelector('.campoBuscaPorNome')
@@ -96,7 +93,6 @@ function pesquisarProdutos(pesquisaUsuario) {
     }
     listarProdutos(arrayPesquisa)
 }
-
 
 //== FUNÇÃO EXTRA PRA PESQUISAR SE APERTAR O ENTER == //
 let body = document.querySelector('body')
