@@ -53,12 +53,16 @@ function criarCards(produto) {
   )
   createUl.classList.add('nutrientes')
   createButton.classList.add('buttonComprar')
+  let createLi01 = document.createElement('li')
+  let createLi02 = document.createElement('li')
+  let createLi03 = document.createElement('li')
+  let createLi04 = document.createElement('li')
 
-  for (let i = 0; i < 4; i++) {
-    let createLi = document.createElement('li')
-    createUl.appendChild(createLi)
-    createLi.innerHTML = produtos[i].componentes[i]
-  }
+  createUl.append(createLi01, createLi02, createLi03, createLi04)
+  createLi01.innerHTML = produtos[id].componentes[0]
+  createLi02.innerHTML = produtos[id].componentes[1]
+  createLi03.innerHTML = produtos[id].componentes[2]
+  createLi04.innerHTML = produtos[id].componentes[3]
 
   //===Adicionando propriedades dos objetos===//
   createImg.src = `${img}`
