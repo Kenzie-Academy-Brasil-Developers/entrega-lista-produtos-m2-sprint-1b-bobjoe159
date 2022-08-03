@@ -16,28 +16,17 @@
     <title>Lista de Produtos</title>
   </head>
   <body>
-    <!-- CABEÇALHO -->
     <header>
       <h1>Shop now</h1>
     </header>
-    <!-- PARTE PRINCIPAL -->
     <main>
       <section class="filtersContainer">
-        <div id="botoesContainer">
-          <button onclick = "listarProdutos(produtos)"class="estiloGeralBotoes estiloGeralBotoes--filter">
-            Todos Produtos
-          </button>
-          <button onclick = "listarProdutos(hortifruti)"class="estiloGeralBotoes estiloGeralBotoes--filter">
-            Hortifruti
-          </button>
-          <button onclick = "listarProdutos(panificadora)"class="estiloGeralBotoes estiloGeralBotoes--filter">
-            Panificadora
-          </button>
-          <button onclick = "listarProdutos(laticinio)"class="estiloGeralBotoes estiloGeralBotoes--filter">
-            Laticínios
-          </button>
+        <div class="buttonsContent" id="botoesContainer">
+          <button onclick="listarProdutos(produtos)">Todos Produtos</button>
+          <button onclick="listarProdutos(hortifruti)">Hortifruti</button>
+          <button onclick="listarProdutos(panificadora)">Panificadora</button>
+          <button onclick="listarProdutos(laticinio)">Laticínios</button>
         </div>
-
         <div class="containerBuscaPorNome">
           <input
             type="text"
@@ -53,32 +42,65 @@
       </section>
       <section class="priceContainer">
         <div>
-            <img src="./src/img/alert-circle.png" alt="exclamação de alerta">
-            <p>Valor total dos produtos da sessão selecionada</p>
+          <img src="./src/img/alert-circle.png" alt="exclamação de alerta" />
+          <p>Valor total dos produtos da sessão selecionada</p>
         </div>
-        <span class = "totalValue">R$ 0.00</span>
+        <span class="totalValue">R$ 0.00</span>
       </section>
-      <!-- CONTAINER DE PRODUTOS -->
-      <section class="containerVitrine">
-        <div class="containerListaProdutos">
-         <ul class = containerUl>
-                    <!-- Utilize esse item html como template para a construção da lista de produtos
-                    
-                    Você pode remover esses comentários depois que fizer a construção pelo DOM -->
-                    
-            
-                    <!-- <li>
-                        <img src="./src/img/maça.png" alt="Imagem maçã">
-                        <h3>Maçã</h3>
-                        <span>Hortifruti</span>
-                        <p>R$ 2.00</p>
-                    </li> -->
-                    
+      <div class="vitrineMain">
+        <section class="vitrineContent">
+          <ul class="containerUl">
+            <li>
+              <img src="./src/img/banana.png" alt="Imagem banana" />
+              <h3>Banana</h3>
+              <span>Hortifruti</span>
+              <ul class="nutrientes">
+                <li>Potássio</li>
+                <li>Vitamina B6</li>
+                <li>Vitamina C</li>
+                <li>Folatos</li>
+              </ul>
+              <p>R$ 2.00</p>
+              <button>Comprar</button>
+            </li>
           </ul>
-        </div>
-      </section>
+        </section>
+        <section class="carrinho">
+          <p>Carrinho</p>
+          <!-- <div class="noItens">
+            <img src="./src/img/carrinho.svg" alt="" />
+            <p>Por enquanto não temos produtos no carrinho</p>
+          </div> -->
+        </section>
+      </div>
     </main>
     <script src="src/js/dataProdutos.js"></script>
     <script src="src/js/script.js"></script>
   </body>
 </html>
+
+<!-- <div class="carrinhoContent">
+  <div class="carrinhoItem">
+    <div class="itemInfos">
+      <img src="./src/img/banana.png" alt="" />
+      <div class="infoNames">
+        <h3>Banana</h3>
+        <span>Hortifruti</span>
+        <p>R$ 2,00</p>
+      </div>
+    </div>
+    <div class="itemLixeira">
+      <img src="./src/img/lixeira.svg" alt="" />
+    </div>
+  </div>
+  <div class="itensTotal">
+    <div class="qtdTotal">
+      <p>Quantidade:</p>
+      <span>1</span>
+    </div>
+    <div class="priceTotal">
+      <p>Total:</p>
+      <span>R$ 2,00</span>
+    </div>
+  </div>
+</div> -->
