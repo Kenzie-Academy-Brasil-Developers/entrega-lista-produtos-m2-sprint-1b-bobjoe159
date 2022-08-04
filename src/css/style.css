@@ -175,12 +175,6 @@ main {
   margin-top: 15px;
  }
 
- .itemImagem img {
-  width: 70px;
-  height: 70px;
-  border-radius: 8px;
- }
-
  .carrinhoItem {
   display: flex;
   flex-direction: column;
@@ -210,9 +204,8 @@ main {
  }
 
  .itemCard img {
-  width: 70px;
   height: 70px;
-  border-radius: 12px;;
+  border-radius: 12px;
  }
 
  .noItens > p {

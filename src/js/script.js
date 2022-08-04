@@ -13,20 +13,6 @@ function listarProdutos(array) {
   totalValue.innerHTML = `R$ ${totalSum},00`
 }
 
-{
-  /* <img src="./src/img/banana.png" alt="Imagem banana" />
-<h3>Banana</h3>
-<span>Hortifruti</span>
-<ul class="nutrientes">
-  <li>Potássio</li>
-  <li>Vitamina B6</li>
-  <li>Vitamina C</li>
-  <li>Folatos</li>
-</ul>
-<p>R$ 2.00</p>
-<button>Comprar</button> */
-}
-
 //==FUNÇÃO PARA CRIAR OS CARDS DE ACORDO COM O PRODUTO==//
 function criarCards(produto) {
   let nome = produto.nome
@@ -61,17 +47,6 @@ function criarCards(produto) {
     createUl.append(createLi)
     createLi.innerHTML = produtos[id].componentes[i]
   }
-
-  // let createLi01 = document.createElement('li')
-  // let createLi02 = document.createElement('li')
-  // let createLi03 = document.createElement('li')
-  // let createLi04 = document.createElement('li')
-
-  // createUl.append(createLi01, createLi02, createLi03, createLi04)
-  // createLi01.innerHTML = produtos[id].componentes[0]
-  // createLi02.innerHTML = produtos[id].componentes[1]
-  // createLi03.innerHTML = produtos[id].componentes[2]
-  // createLi04.innerHTML = produtos[id].componentes[3]
 
   //===Adicionando propriedades dos objetos===//
   createImg.src = `${img}`
