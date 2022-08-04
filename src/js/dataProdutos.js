@@ -52,6 +52,6 @@ const produtos = [
     img: './src/img/leite.png',
     promocao: false,
     precoPromocao: '1.00',
-    componentes: ['Carboidratos', 'Proteínas', 'Gorduras totais']
+    componentes: ['Carboidratos', 'Proteínas', 'Gorduras totais', 'Cálcio']
   }
 ]

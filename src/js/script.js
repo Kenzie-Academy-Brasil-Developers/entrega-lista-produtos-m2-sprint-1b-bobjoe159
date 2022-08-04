@@ -158,7 +158,7 @@ selectUl.addEventListener('click', function (event) {
   let btnComprar = event.target
   let btnId = btnComprar.id
   if (btnComprar.tagName == 'BUTTON') {
-    arrayCarrinho.push(produtos[btnId])
+    arrayCarrinho.unshift(produtos[btnId])
     listarProdutosCarrinho(arrayCarrinho)
     if (arrayCarrinho.length > 0) {
       let cartItem = document.querySelectorAll('.itemCard')[0]
@@ -199,7 +199,7 @@ function criarCardsCarrinho(array, indice) {
   carrinhoh3.innerHTML = nome
   carrinhoImg.src = img
   carrinhoSpan.innerHTML = secao
-  carrinhoP.innerHTML = preco
+  carrinhoP.innerHTML = `R$${preco},00`
 
   // criando lixeira //
 
