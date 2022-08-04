@@ -170,6 +170,8 @@ main {
  }
 
  .infoNames {
+  width: 200px;
+  height: 80px;
   margin-left: 15px;
  }
 

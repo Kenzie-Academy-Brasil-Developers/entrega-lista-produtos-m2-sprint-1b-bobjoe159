@@ -89,6 +89,7 @@ function atualizarValor(array) {
 let hortifruti = []
 let panificadora = []
 let laticinio = []
+let arrayCarrinho = []
 
 function listarCategorias() {
   for (let i = 0; i < produtos.length; i++) {
@@ -151,8 +152,6 @@ body.addEventListener(
   false
 )
 
-let arrayCarrinho = []
-
 selectUl.addEventListener('click', function (event) {
   let btnComprar = event.target
   let btnId = btnComprar.id
@@ -167,16 +166,17 @@ let carrinhoItem = document.querySelector('.carrinhoItem')
 function listarProdutosCarrinho(array) {
   carrinhoItem.innerHTML = ``
   for (let i = 0; i < array.length; i++) {
-    criarCardsCarrinho(array[i])
+    criarCardsCarrinho(array[i], i)
   }
   atualizarValorCarrinho()
 }
 
-function criarCardsCarrinho(array) {
+function criarCardsCarrinho(array, indice) {
   let nome = array.nome
   let img = array.img
   let preco = array.preco
   let secao = array.secao
+  let id = indice
 
   let carrinhoCard = document.createElement('div')
   carrinhoCard.classList.add('itemCard')
@@ -202,6 +202,7 @@ function criarCardsCarrinho(array) {
   divLixeira.classList.add('itemLixeira')
   divLixeira.append(imgLixeira)
   imgLixeira.src = './src/img/lixeira.svg'
+  imgLixeira.id = id
   carrinhoCard.append(carrinhoImg, createInfoNames, divLixeira)
 }
 
@@ -212,7 +213,6 @@ carrinhoConteudo.addEventListener('click', removerItemCarrinho)
 function removerItemCarrinho(event) {
   let btnRemover = event.target
   let btnId = btnRemover.id
-  console.log(arrayCarrinho)
   //let cartItem = document.querySelectorAll('.itemCard')[btnId]
   if (btnRemover.tagName == 'IMG') {
     arrayCarrinho.splice(btnId, 1)
