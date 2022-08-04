@@ -123,10 +123,12 @@ function pesquisarProdutos(pesquisaUsuario) {
   for (let i = 0; i < produtos.length; i++) {
     let pesquisaLowerCase = pesquisaUsuario.toLowerCase()
     let nomeProduto = produtos[i].nome.toLowerCase()
+    let secaoProduto = produtos[i].secao.toLowerCase()
     let categoriaProduto = produtos[i].categoria.toLowerCase()
     if (
       nomeProduto.includes(pesquisaLowerCase) ||
-      categoriaProduto.includes(pesquisaLowerCase)
+      categoriaProduto.includes(pesquisaLowerCase) ||
+      secaoProduto.includes(pesquisaLowerCase)
     ) {
       arrayPesquisa.push(produtos[i])
     }
