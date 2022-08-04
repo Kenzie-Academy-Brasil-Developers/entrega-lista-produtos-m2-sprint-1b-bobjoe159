@@ -4,16 +4,18 @@ let selectCarrinho = document.querySelector('.carrinho')
 let selectCarrinhoContent = document.querySelector('.carrinhoContent')
 
 //==FUNÇÃO PARA LISTAR OS PRODUTOS DE ACORDO COM O ARRAY==//
+
 function listarProdutos(array) {
   selectUl.innerHTML = ``
-  for (let i = 0; i < array.length; i++) {
-    criarCards(array[i])
-  }
+  array.forEach(i => {
+    criarCards(i)
+  })
   let totalSum = atualizarValor(array)
   totalValue.innerHTML = `R$ ${totalSum},00`
 }
 
 //==FUNÇÃO PARA CRIAR OS CARDS DE ACORDO COM O PRODUTO==//
+
 function criarCards(produto) {
   let nome = produto.nome
   let preco = produto.preco
@@ -61,10 +63,9 @@ function criarCards(produto) {
 //==FUNÇÃO PARA ATUALIZAR O VALOR TOTAL DOS PRODUTOS==//
 
 function atualizarValor(array) {
-  let sum = 0
-  for (let i = 0; i < array.length; i++) {
-    sum += array[i].preco
-  }
+  const sum = array.reduce(function (acumulador, atual) {
+    return acumulador + atual.preco
+  }, 0)
   return sum
 }
 
@@ -76,15 +77,15 @@ let laticinio = []
 let arrayCarrinho = []
 
 function listarCategorias() {
-  for (let i = 0; i < produtos.length; i++) {
-    if (produtos[i].secao == 'Hortifruti') {
-      hortifruti.push(produtos[i])
-    } else if (produtos[i].secao == 'Panificadora') {
-      panificadora.push(produtos[i])
-    } else if (produtos[i].secao == 'Laticinio') {
-      laticinio.push(produtos[i])
+  produtos.forEach(function (i) {
+    if (i.secao == 'Hortifruti') {
+      hortifruti.push(i)
+    } else if (i.secao == 'Panificadora') {
+      panificadora.push(i)
+    } else if (i.secao == 'Laticinio') {
+      laticinio.push(i)
     }
-  }
+  })
 }
 
 listarProdutos(produtos)
@@ -105,25 +106,25 @@ inputButton.addEventListener('click', function () {
 let arrayPesquisa = []
 
 function pesquisarProdutos(pesquisaUsuario) {
-  for (let i = 0; i < produtos.length; i++) {
+  produtos.forEach(i => {
     let pesquisaLowerCase = pesquisaUsuario.toLowerCase()
-    let nomeProduto = produtos[i].nome.toLowerCase()
-    let secaoProduto = produtos[i].secao.toLowerCase()
-    let categoriaProduto = produtos[i].categoria.toLowerCase()
+    let nomeProduto = i.nome.toLowerCase()
+    let secaoProduto = i.secao.toLowerCase()
+    let categoriaProduto = i.categoria.toLowerCase()
     if (
       nomeProduto.includes(pesquisaLowerCase) ||
       categoriaProduto.includes(pesquisaLowerCase) ||
       secaoProduto.includes(pesquisaLowerCase)
     ) {
-      arrayPesquisa.push(produtos[i])
+      arrayPesquisa.push(i)
     }
-  }
+  })
   listarProdutos(arrayPesquisa)
 }
 
 //== FUNÇÃO EXTRA PRA PESQUISAR SE APERTAR O ENTER == //
-let body = document.querySelector('body')
 
+let body = document.querySelector('body')
 body.addEventListener(
   'keypress',
   function (event) {
@@ -154,9 +155,11 @@ let carrinhoItem = document.querySelector('.carrinhoItem')
 
 function listarProdutosCarrinho(array) {
   carrinhoItem.innerHTML = ``
-  for (let i = 0; i < array.length; i++) {
-    criarCardsCarrinho(array[i], i)
-  }
+  let index = 0
+  array.forEach(function (i) {
+    criarCardsCarrinho(i, index)
+    index++
+  })
   atualizarValorCarrinho()
 }
 
@@ -218,11 +221,10 @@ let noItens = document.querySelector('.noItens')
 let itensTotal = document.querySelector('.itensTotal')
 
 function atualizarValorCarrinho() {
-  let sum = 0
   let qtd = arrayCarrinho.length
-  for (let i = 0; i < arrayCarrinho.length; i++) {
-    sum += arrayCarrinho[i].preco
-  }
+  const sum = arrayCarrinho.reduce(function (acumulador, atual) {
+    return acumulador + atual.preco
+  }, 0)
   priceTotal.innerHTML = `R$${sum},00`
   qtdTotal.innerHTML = `${qtd}`
   if (arrayCarrinho.length == 0) {
@@ -235,7 +237,3 @@ function atualizarValorCarrinho() {
 }
 
 atualizarValorCarrinho()
-
-// Primeira entrega do M2, refatorei um e-commerce aplicando conceito mobile-first, totalmente responsivo, utilizei apenas HTML, CSS, JS puro.
-// Também utilizei uma biblioteca externa de animações para tornar o layout mais dinâmico! Muita fé e progresso.
-// Kenzie Academy Brasil
