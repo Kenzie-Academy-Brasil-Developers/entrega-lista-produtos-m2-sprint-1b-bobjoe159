@@ -55,16 +55,23 @@ function criarCards(produto) {
   )
   createUl.classList.add('nutrientes')
   createButton.classList.add('buttonComprar')
-  let createLi01 = document.createElement('li')
-  let createLi02 = document.createElement('li')
-  let createLi03 = document.createElement('li')
-  let createLi04 = document.createElement('li')
 
-  createUl.append(createLi01, createLi02, createLi03, createLi04)
-  createLi01.innerHTML = produtos[id].componentes[0]
-  createLi02.innerHTML = produtos[id].componentes[1]
-  createLi03.innerHTML = produtos[id].componentes[2]
-  createLi04.innerHTML = produtos[id].componentes[3]
+  for (let i = 0; i < produtos[id].componentes.length; i++) {
+    let createLi = document.createElement('li')
+    createUl.append(createLi)
+    createLi.innerHTML = produtos[id].componentes[i]
+  }
+
+  // let createLi01 = document.createElement('li')
+  // let createLi02 = document.createElement('li')
+  // let createLi03 = document.createElement('li')
+  // let createLi04 = document.createElement('li')
+
+  // createUl.append(createLi01, createLi02, createLi03, createLi04)
+  // createLi01.innerHTML = produtos[id].componentes[0]
+  // createLi02.innerHTML = produtos[id].componentes[1]
+  // createLi03.innerHTML = produtos[id].componentes[2]
+  // createLi04.innerHTML = produtos[id].componentes[3]
 
   //===Adicionando propriedades dos objetos===//
   createImg.src = `${img}`
@@ -201,7 +208,7 @@ function criarCardsCarrinho(array, indice) {
   carrinhoSpan.innerHTML = secao
   carrinhoP.innerHTML = `R$${preco},00`
 
-  // criando lixeira //
+  // CRIANDO LIXEIRA //
 
   let divLixeira = document.createElement('div')
   let imgLixeira = document.createElement('img')
@@ -253,3 +260,7 @@ function atualizarValorCarrinho() {
 }
 
 atualizarValorCarrinho()
+
+// Primeira entrega do M2, refatorei um e-commerce aplicando conceito mobile-first, totalmente responsivo, utilizei apenas HTML, CSS, JS puro.
+// Também utilizei uma biblioteca externa de animações para tornar o layout mais dinâmico! Muita fé e progresso.
+// Kenzie Academy Brasil
