@@ -36,6 +36,8 @@ function criarCards(produto) {
   let id = produto.id
 
   let createLi = document.createElement('li')
+  createLi.classList.add('animate__animated', 'animate__fadeInLeft')
+  createLi.style.setProperty('--animate-duration', '0.5s')
   let createImg = document.createElement('img')
   let createh3 = document.createElement('h3')
   let createSpan = document.createElement('span')
@@ -158,6 +160,11 @@ selectUl.addEventListener('click', function (event) {
   if (btnComprar.tagName == 'BUTTON') {
     arrayCarrinho.push(produtos[btnId])
     listarProdutosCarrinho(arrayCarrinho)
+    if (arrayCarrinho.length > 0) {
+      let cartItem = document.querySelectorAll('.itemCard')[0]
+      cartItem.classList.add('animate__animated', 'animate__backInLeft')
+      cartItem.style.setProperty('--animate-duration', '0.6s')
+    }
   }
 })
 
@@ -186,7 +193,6 @@ function criarCardsCarrinho(array, indice) {
   let carrinhoh3 = document.createElement('h3')
   let carrinhoSpan = document.createElement('span')
   let carrinhoP = document.createElement('p')
-
   carrinhoItem.append(carrinhoCard)
   createInfoNames.append(carrinhoh3, carrinhoSpan, carrinhoP)
 
@@ -213,11 +219,15 @@ carrinhoConteudo.addEventListener('click', removerItemCarrinho)
 function removerItemCarrinho(event) {
   let btnRemover = event.target
   let btnId = btnRemover.id
-  //let cartItem = document.querySelectorAll('.itemCard')[btnId]
+  let cartItem = document.querySelectorAll('.itemCard')[btnId]
   if (btnRemover.tagName == 'IMG') {
     arrayCarrinho.splice(btnId, 1)
+    cartItem.classList.add('animate__animated', 'animate__backOutRight')
+    cartItem.style.setProperty('--animate-duration', '0.6s')
   }
-  listarProdutosCarrinho(arrayCarrinho)
+  setTimeout(function () {
+    listarProdutosCarrinho(arrayCarrinho)
+  }, 400)
 }
 
 let priceTotal = document.querySelector('.priceTotalSpan')
