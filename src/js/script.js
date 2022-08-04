@@ -74,8 +74,6 @@ function criarCards(produto) {
   createButton.id = id
 }
 
-function criarCardsCarrinho() {}
-
 //==FUNÇÃO PARA ATUALIZAR O VALOR TOTAL DOS PRODUTOS==//
 
 function atualizarValor(array) {
@@ -83,7 +81,6 @@ function atualizarValor(array) {
   for (let i = 0; i < array.length; i++) {
     sum += array[i].preco
   }
-  console.log(sum)
   return sum
 }
 
@@ -157,15 +154,90 @@ let arrayCarrinho = []
 selectUl.addEventListener('click', function (event) {
   let btnComprar = event.target
   let btnId = btnComprar.id
-  console.log(btnId)
   if (btnComprar.tagName == 'BUTTON') {
     arrayCarrinho.push(produtos[btnId])
     listarProdutosCarrinho(arrayCarrinho)
   }
 })
 
+let carrinhoItem = document.querySelector('.carrinhoItem')
+
 function listarProdutosCarrinho(array) {
+  carrinhoItem.innerHTML = ``
   for (let i = 0; i < array.length; i++) {
     criarCardsCarrinho(array[i])
   }
+  atualizarValorCarrinho()
 }
+
+function criarCardsCarrinho(array) {
+  let nome = array.nome
+  let img = array.img
+  let preco = array.preco
+  let secao = array.secao
+
+  let carrinhoCard = document.createElement('div')
+  carrinhoCard.classList.add('itemCard')
+  let createInfoNames = document.createElement('div')
+  createInfoNames.classList.add('infoNames')
+  let carrinhoImg = document.createElement('img')
+  let carrinhoh3 = document.createElement('h3')
+  let carrinhoSpan = document.createElement('span')
+  let carrinhoP = document.createElement('p')
+
+  carrinhoItem.append(carrinhoCard)
+  createInfoNames.append(carrinhoh3, carrinhoSpan, carrinhoP)
+
+  carrinhoh3.innerHTML = nome
+  carrinhoImg.src = img
+  carrinhoSpan.innerHTML = secao
+  carrinhoP.innerHTML = preco
+
+  // criando lixeira //
+
+  let divLixeira = document.createElement('div')
+  let imgLixeira = document.createElement('img')
+  divLixeira.classList.add('itemLixeira')
+  divLixeira.append(imgLixeira)
+  imgLixeira.src = './src/img/lixeira.svg'
+  carrinhoCard.append(carrinhoImg, createInfoNames, divLixeira)
+}
+
+let carrinhoConteudo = document.querySelector('.carrinhoItem')
+
+carrinhoConteudo.addEventListener('click', removerItemCarrinho)
+
+function removerItemCarrinho(event) {
+  let btnRemover = event.target
+  let btnId = btnRemover.id
+  console.log(arrayCarrinho)
+  //let cartItem = document.querySelectorAll('.itemCard')[btnId]
+  if (btnRemover.tagName == 'IMG') {
+    arrayCarrinho.splice(btnId, 1)
+  }
+  listarProdutosCarrinho(arrayCarrinho)
+}
+
+let priceTotal = document.querySelector('.priceTotalSpan')
+let qtdTotal = document.querySelector('.qtdTotalSpan')
+let noItens = document.querySelector('.noItens')
+let itensTotal = document.querySelector('.itensTotal')
+
+function atualizarValorCarrinho() {
+  let sum = 0
+  let qtd = arrayCarrinho.length
+  for (let i = 0; i < arrayCarrinho.length; i++) {
+    sum += arrayCarrinho[i].preco
+  }
+  priceTotal.innerHTML = `R$${sum},00`
+  qtdTotal.innerHTML = `${qtd}`
+  if (arrayCarrinho.length == 0) {
+    noItens.style = `display: flex`
+    itensTotal.style = `display: none`
+  } else if (arrayCarrinho.length > 0) {
+    noItens.style = `display: none`
+    itensTotal.style = `display: block`
+  }
+}
+
+atualizarValorCarrinho()

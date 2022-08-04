@@ -159,12 +159,14 @@ main {
 
  .carrinhoItem {
   display: flex;
+  flex-direction: column;
   margin-top: 15px;
-  justify-content: space-between;
+  gap: 15px;
  }
  
- .itemInfos {
+ .itemCard {
   display: flex;
+  justify-content: space-between;
  }
 
  .infoNames {
@@ -172,7 +174,7 @@ main {
  }
 
  .infoNames > h3 {
-  margin-bottom: 5px;
+  margin-block: 5px;
   font-weight: 700;
  }
 
@@ -181,7 +183,7 @@ main {
   font-weight: 700;
  }
 
- .itemInfos img {
+ .itemCard img {
   width: 70px;
   height: 70px;
   border-radius: 12px;;
@@ -193,7 +195,7 @@ main {
 }
 
 .noItens {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -205,6 +207,11 @@ main {
   height: 15px;
 }
 
+.itemLixeira {
+  display: flex;
+  margin-left: 140px;
+}
+
 .itemLixeira img:hover {
   cursor: pointer;
 }
@@ -213,7 +220,12 @@ main {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  overflow-x: hidden;
   height: 240px;
+}
+
+.carrinhoContent::-webkit-scrollbar {
+  display: none
 }
 
 .priceContainer {
